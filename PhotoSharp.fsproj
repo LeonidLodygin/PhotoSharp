@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <Compile Include="MainWindow.axaml.fs" />
-    <Compile Include="App.axaml.fs"/>
+    <Compile Include="App.axaml.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
@@ -21,5 +21,6 @@
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.6" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.6" />
+    <PackageReference Include="LeonidLodygin.ImageProcessing" Version="1.0.0" />
   </ItemGroup>
 </Project>
