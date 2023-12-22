@@ -12,10 +12,26 @@ An application with simple and clear controls for processing your images, based 
 
 ## Quick start
 
-Clone this repository or download ZIP and start the program:
+Clone this repository or download ZIP:
+```sh
+> git clone https://github.com/LeonidLodygin/PhotoSharp.git
+```
+
+Go to the repository directory and download the package:
+```sh
+> wget https://github.com/LeonidLodygin/ImageProcessing/releases/download/v1.0.0/leonidlodygin.imageprocessing.1.0.0.nupkg
+```
+
+Add the project root to the Nuget package source:
+```sh
+> dotnet nuget add source $(pwd)
+```
+
+Run the app:
 ```sh
 > dotnet run
 ```
+
 
 ## Contributors
 - Leonid Lodygin (Github: [@LeonidLodygin](https://github.com/LeonidLodygin))
