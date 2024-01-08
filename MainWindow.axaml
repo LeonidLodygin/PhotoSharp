@@ -4,6 +4,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="PhotoSharp.MainWindow"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
         Title="PhotoSharp">
-    Welcome to Avalonia!
+    
+    
+    
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
+            <Button BorderBrush="{DynamicResource SystemAccentColor}" BorderThickness="4" Content="Open image" Click="openImage"/>
+            <Button BorderBrush="{DynamicResource SystemAccentColor}" BorderThickness="4" Content="Open directory" Click="openDirectory"/>
+            <ToggleSwitch Content="GPGPU"
+                          OnContent="On"
+                          OffContent="Off"
+                          Margin="10"
+                          IsChecked="False"
+                          Name="GPGPU"/>
+            <ToggleSwitch Content="Agents"
+                          OnContent="On"
+                          OffContent="Off"
+                          Margin="10"
+                          IsChecked="False"
+                          IsEnabled="False"
+                          Name="Agents"/>
+            <Button Name="SaveImage" BorderBrush="{DynamicResource SystemAccentColor}" BorderThickness="4" IsEnabled="False" Click="saveImage">Save</Button>
+        </StackPanel>
+        <Grid ColumnDefinitions="*, 4, *" RowDefinitions="*" DockPanel.Dock="Left">
+            <Panel Grid.Column="0" IsVisible="False" Name="ImagePanel">
+                <Rectangle Fill="LightGray"/>
+                <Image Margin="20" Name="Image"/>
+            </Panel>
+            <ListBox Grid.Column="0" Name="ListOfFiles" IsVisible="False"/>
+            <ProgressBar Grid.Column="0" Name="ProgressBar" VerticalAlignment="Center" HorizontalAlignment="Center" IsIndeterminate="True" IsVisible="False" Height="10"/>
+            <GridSplitter Grid.Column="1" Background="Black" ResizeDirection="Columns"/>
+            <DockPanel Grid.Column="2">
+                <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
+                    <Menu>
+                        <MenuItem Header="Add modification">
+                            <MenuItem Header="Gauss5x5" Click="addModification"/>
+                            <MenuItem Header="Gauss7x7" Click="addModification"/>
+                            <MenuItem Header="Edges" Click="addModification"/>
+                            <MenuItem Header="Sharpen" Click="addModification"/>
+                            <MenuItem Header="Emboss" Click="addModification"/>
+                            <MenuItem Header="ClockwiseRotation" Click="addModification"/>
+                            <MenuItem Header="CounterClockwiseRotation" Click="addModification"/>
+                            <MenuItem Header="MirrorVertical" Click="addModification"/>
+                            <MenuItem Header="MirrorHorizontal" Click="addModification"/>
+                            <MenuItem Header="FishEye" Click="addModification"/>
+                        </MenuItem>
+                    </Menu>
+                    <Button Background="{DynamicResource SystemAccentColor}" Click="deleteModification">Delete last modification</Button>
+                    <Button Background="{DynamicResource SystemAccentColor}" Click="clearModifications">Clear modifications</Button>
+                    <Button Name="ApplyModification" Background="{DynamicResource SystemAccentColor}" Click="applyModifications" IsEnabled="False">Apply modifications</Button>
+                    <Button Name="SaveDirectory" Background="{DynamicResource SystemAccentColor}" Click="applyAndSave" IsEnabled="False">Apply all mods and save images</Button>
+                </StackPanel>
+                <ListBox DockPanel.Dock="Bottom" Name="ListOfModifications"/>
+            </DockPanel>
+        </Grid>
+    </DockPanel>
 </Window>
